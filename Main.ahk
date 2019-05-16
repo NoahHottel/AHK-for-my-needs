@@ -107,7 +107,7 @@ Loop
     YMnew -= Ym
     WinGotoX:=(WinXm + XMnew)
     WinGotoY:= (WinYm + YMnew)
-   
+    SetWinDelay, -1   ; Makes the below move faster/smoother.
     WinMove,ahk_id %IDwin%,,%WinGotoX%,%WinGotoY% 
 }
 return
