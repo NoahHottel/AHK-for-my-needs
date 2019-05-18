@@ -51,6 +51,7 @@ SetScrollLockState AlwaysOff
 ;Volume by mouse wheel with win key
 ;Caps WinDrag by CapsLock & LButton on any placement of the window
 ;Back one with CapsLock and F1
+;set constants for lock keys
 ;----------------------------------------------------------
 
 ;----------------------------------------------------------
