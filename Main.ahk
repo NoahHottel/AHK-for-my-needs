@@ -1,6 +1,7 @@
 ﻿;----------------------------------------------------------
 ;Main.ahk
-;@Author : Noah Hottel
+;@Author : Noah Hottel (NoahHottel@gmail.com)
+;@Link   : https://github.com/NoahHottel
 ;@Date   : 4/22/2019, 3:34:33 PM
 ;----------------------------------------------------------
 #SingleInstance, force
@@ -48,10 +49,10 @@ SetScrollLockState AlwaysOff
 ;FastStone
 ;
 ;Others
+;Set constants for lock keys
 ;Volume by mouse wheel with win key
 ;Caps WinDrag by CapsLock & LButton on any placement of the window
-;Back one with CapsLock and F1
-;set constants for lock keys
+;Back one with F1
 ;----------------------------------------------------------
 
 ;----------------------------------------------------------
@@ -118,7 +119,7 @@ if EWD_EscapeState = D  ; Escape has been pressed, so drag is cancelled.
 CoordMode, Mouse
 MouseGetPos, EWD_MouseX, EWD_MouseY
 WinGetPos, EWD_WinX, EWD_WinY,,, ahk_id %EWD_MouseWin%
-SetWinDelay, -1   ; Makes the below move faster/smoother.
+SetWinDelay, 0   ; Makes the below move faster/smoother.
 WinMove, ahk_id %EWD_MouseWin%,, EWD_WinX + EWD_MouseX - EWD_MouseStartX, EWD_WinY + EWD_MouseY - EWD_MouseStartY
 EWD_MouseStartX := EWD_MouseX  ; Update for the next timer-call to this subroutine.
 EWD_MouseStartY := EWD_MouseY
@@ -136,7 +137,7 @@ return
  *                                          
  */
 
-CapsLock & F1::
+F1::
 if WinActive("ahk_class CabinetWClass")
 	Send !{left}
 if WinActive("ahk_exe chrome.exe")
@@ -171,7 +172,6 @@ return
  */
 
 ^Numpad1::
-;run, Explorer.ahk
 IfWinNotExist, ahk_class CabinetWClass
 	run, explorer.exe
 GroupAdd, userexplorers, ahk_class CabinetWClass
@@ -196,7 +196,6 @@ return
  */
 	
 ^Numpad2::
-;run, Chrome.ahk
 IfWinNotExist, ahk_exe chrome.exe
 	run, chrome.exe
 If WinActive("ahk_exe chrome.exe")
@@ -219,7 +218,6 @@ return
  */
 
 ^Numpad3::
-;run, VSCode.ahk
 IfWinNotExist, ahk_exe Code.exe
 	run, C:\Users\noahh\AppData\Local\Programs\Microsoft VS Code\Code.exe
 If WinActive("ahk_exe Code.exe")
@@ -242,7 +240,6 @@ return
  */
 
 ^Numpad4::
-;run, Libre_Office.ahk
 IfWinNotExist, ahk_class SALFRAME
 	run, soffice.exe
 GroupAdd, useroffice, ahk_class SALFRAME
@@ -289,7 +286,6 @@ return
  */
 
 ^Numpad6::
-;run, FastStone.ahk
 IfWinNotExist, ahk_exe FSViewer.exe
 	run, FSViewer.exe
 GroupAdd, userphotos, ahk_exe FSViewer.exe
@@ -303,3 +299,10 @@ return
 IfWinExist, ahk_exe FSViewer.exe
     WinClose
 return
+
+;----------------------------------------------------------
+;Changelog
+;
+;windrag set win delay from -1(fastest) to 0 for stability( set win delay ahk help)
+;changed go back 1 from caps lock f1 to just f1
+;----------------------------------------------------------
