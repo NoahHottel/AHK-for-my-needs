@@ -36,6 +36,9 @@ SetScrollLockState AlwaysOff
 ;for killing apps
 ;IfWinExist, ahk_class x
 ;    WinClose
+;
+;Portable directory
+;%A_ScriptDir%\PortableApps\..\.exe
 ;----------------------------------------------------------
 
 ;----------------------------------------------------------
@@ -197,7 +200,7 @@ return
 	
 ^Numpad2::
 IfWinNotExist, ahk_exe chrome.exe
-	run, chrome.exe
+	run, %A_ScriptDir%\PortableApps\GoogleChromePortable\GoogleChromePortable.exe
 If WinActive("ahk_exe chrome.exe")
 	send ^{tab}
 else WinActivate ahk_exe chrome.exe
@@ -219,7 +222,7 @@ return
 
 ^Numpad3::
 IfWinNotExist, ahk_exe Code.exe
-	run, C:\Users\noahh\AppData\Local\Programs\Microsoft VS Code\Code.exe
+	run, %A_ScriptDir%\PortableApps\VSCodePortable\VSCodePortable.exe
 If WinActive("ahk_exe Code.exe")
 	send ^+{tab}
 else WinActivate ahk_exe Code.exe
@@ -241,7 +244,7 @@ return
 
 ^Numpad4::
 IfWinNotExist, ahk_class SALFRAME
-	run, soffice.exe
+	run, %A_ScriptDir%\PortableApps\LibreOfficePortable\LibreOfficePortable.exe
 GroupAdd, useroffice, ahk_class SALFRAME
 if WinActive("ahk_class SALFRAME")
 	GroupActivate, useroffice, r
@@ -255,24 +258,26 @@ IfWinExist, ahk_class SALFRAME
 return
 
 /***
- *      ____                 _    _   __        
- *     / ___|  _ __    ___  | |_ (_) / _| _   _ 
- *     \___ \ | '_ \  / _ \ | __|| || |_ | | | |
- *      ___) || |_) || (_) || |_ | ||  _|| |_| |
- *     |____/ | .__/  \___/  \__||_||_|   \__, |
- *            |_|                         |___/ 
+ *     __     ___     ____ 
+ *     \ \   / / |   / ___|
+ *      \ \ / /| |  | |    
+ *       \ V / | |__| |___ 
+ *        \_/  |_____\____|
+ *                         
  */
 
 ^Numpad5::
-IfWinNotExist, ahk_exe Spotify.exe
-	run, C:\Users\noahh\AppData\Roaming\Spotify\Spotify.exe
-If WinActive("ahk_exe Spotify.exe")
-	send ^{Right}
-else WinActivate ahk_exe Spotify.exe
+IfWinNotExist, ahk_exe vlc.exe
+	run, %A_ScriptDir%\PortableApps\VLCPortable\VLCPortable.exe
+GroupAdd, uservideo, ahk_exe vlc.exe
+if WinActive("ahk_exe vlc.exe")
+	GroupActivate, uservideo, r
+else
+	WinActivate ahk_exe vlc.exe
 return
 
 !Numpad5::
-IfWinExist, ahk_exe Spotify.exe
+IfWinExist, ahk_exe vlc.exe
     WinClose
 return
 
@@ -287,7 +292,7 @@ return
 
 ^Numpad6::
 IfWinNotExist, ahk_exe FSViewer.exe
-	run, FSViewer.exe
+	run, %A_ScriptDir%\PortableApps\FSViewerPortable\FSViewerPortable.exe
 GroupAdd, userphotos, ahk_exe FSViewer.exe
 if WinActive("ahk_exe FSViewer.exe")
 	GroupActivate, userphotos, r
