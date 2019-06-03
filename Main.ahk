@@ -42,11 +42,12 @@ SetScrollLockState AlwaysOff
 ;Apps used in order
 ;Task Manager
 ;Windows Explorer
-;Google Chrome
+;Mozilla Firefox
 ;Notepad++
 ;Libre Office
 ;Spotify
 ;FastStone
+;Thunderbrid
 ;
 ;Others
 ;Set constants for lock keys
@@ -140,10 +141,12 @@ return
 F1::
 if WinActive("ahk_class CabinetWClass")
 	Send !{left}
-if WinActive("ahk_exe chrome.exe")
+if WinActive("ahk_exe firefox.exe")
 	Send ^+{tab}
 if WinActive("ahk_exe Code.exe")
 	Send ^{tab}
+if WinActive("ahk_exe thunderbird.exe")
+	Send ^+{tab}
 Return
 ;----------------------------------------------------------
 
@@ -187,24 +190,24 @@ IfWinExist, ahk_class CabinetWClass
 return
 
 /***
- *       ____  _                                  
- *      / ___|| |__   _ __  ___   _ __ ___    ___ 
- *     | |    | '_ \ | '__|/ _ \ | '_ ` _ \  / _ \
- *     | |___ | | | || |  | (_) || | | | | ||  __/
- *      \____||_| |_||_|   \___/ |_| |_| |_| \___|
- *                                                
+ *      _____ _           __           
+ *     |  ___(_)_ __ ___ / _| _____  __
+ *     | |_  | | '__/ _ \ |_ / _ \ \/ /
+ *     |  _| | | | |  __/  _| (_) >  < 
+ *     |_|   |_|_|  \___|_|  \___/_/\_\
+ *                                     
  */
 	
 ^Numpad2::
-IfWinNotExist, ahk_exe chrome.exe
-	run, chrome.exe
-If WinActive("ahk_exe chrome.exe")
+IfWinNotExist, ahk_exe firefox.exe
+	run, firefox.exe
+If WinActive("ahk_exe firefox.exe")
 	send ^{tab}
-else WinActivate ahk_exe chrome.exe
+else WinActivate ahk_exe firefox.exe
 return
 
 !Numpad2::
-IfWinExist, ahk_exe chrome.exe
+IfWinExist, ahk_exe firefox.exe
 	WinClose
 return
 
@@ -300,9 +303,30 @@ IfWinExist, ahk_exe FSViewer.exe
     WinClose
 return
 
+/***
+ *      _____ _                     _           ____  _         _ 
+ *     |_   _| |__  _   _ _ __   __| | ___ _ __| __ )(_)_ __ __| |
+ *       | | | '_ \| | | | '_ \ / _` |/ _ \ '__|  _ \| | '__/ _` |
+ *       | | | | | | |_| | | | | (_| |  __/ |  | |_) | | | | (_| |
+ *       |_| |_| |_|\__,_|_| |_|\__,_|\___|_|  |____/|_|_|  \__,_|
+ *                                                                
+ */
+
+^Numpad7::
+IfWinNotExist, ahk_exe thunderbird.exe
+	run, thunderbird.exe
+If WinActive("ahk_exe thunderbird.exe")
+	send ^{tab}
+else WinActivate ahk_exe thunderbird.exe
+
+!Numpad7::
+IfWinExist, ahk_exe thunderbird.exe
+    WinClose
 ;----------------------------------------------------------
 ;Changelog
 ;
 ;windrag set win delay from -1(fastest) to 0 for stability( set win delay ahk help)
 ;changed go back 1 from caps lock f1 to just f1
+;changed From Gogle Chrome to Mozilla FireFox
+;Added Thunderbird
 ;----------------------------------------------------------
