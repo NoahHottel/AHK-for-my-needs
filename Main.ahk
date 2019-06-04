@@ -318,10 +318,13 @@ IfWinNotExist, ahk_exe thunderbird.exe
 If WinActive("ahk_exe thunderbird.exe")
 	send ^{tab}
 else WinActivate ahk_exe thunderbird.exe
+return
 
 !Numpad7::
 IfWinExist, ahk_exe thunderbird.exe
     WinClose
+return
+
 ;----------------------------------------------------------
 ;Changelog
 ;
