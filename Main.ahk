@@ -325,11 +325,30 @@ IfWinExist, ahk_exe thunderbird.exe
     WinClose
 return
 
+/***
+ *      __  __ _                            __ _   
+ *     |  \/  (_)_ __   ___  ___ _ __ __ _ / _| |_ 
+ *     | |\/| | | '_ \ / _ \/ __| '__/ _` | |_| __|
+ *     | |  | | | | | |  __/ (__| | | (_| |  _| |_ 
+ *     |_|  |_|_|_| |_|\___|\___|_|  \__,_|_|  \__|
+ *                                                 
+ */
+#q::
+send {LWin}
+sleep 100
+send minecraft {Enter}
+sleep 1000
+send {LWin}
+sleep 100
+send fraps {Enter}
+return
+
 ;----------------------------------------------------------
 ;Changelog
 ;
 ;windrag set win delay from -1(fastest) to 0 for stability( set win delay ahk help)
 ;changed go back 1 from caps lock f1 to just f1
 ;changed From Gogle Chrome to Mozilla FireFox
-;Added Thunderbird
+;added Thunderbird
+;added Minecraft with fraps
 ;----------------------------------------------------------
