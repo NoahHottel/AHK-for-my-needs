@@ -338,7 +338,7 @@ return
 !Numpad0::
 DetectHiddenWindows, On
 IfWinNotExist, ahk_exe javaw.exe
-	run, MinecraftLauncher.exe
+	run, C:\Program Files (x86)\Minecraft\MinecraftLauncher.exe
 IfWinNotExist, ahk_exe fraps.exe
 	run, C:\Fraps\fraps.exe
 
