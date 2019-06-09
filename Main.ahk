@@ -43,11 +43,13 @@ SetScrollLockState AlwaysOff
 ;Task Manager
 ;Windows Explorer
 ;Mozilla Firefox
-;Notepad++
+;VS Code
 ;Libre Office
 ;Spotify
 ;FastStone
 ;Thunderbrid
+;
+;Minecraft
 ;
 ;Others
 ;Set constants for lock keys
@@ -333,14 +335,15 @@ return
  *     |_|  |_|_|_| |_|\___|\___|_|  \__,_|_|  \__|
  *                                                 
  */
-#q::
-send {LWin}
-sleep 100
-send minecraft {Enter}
-sleep 1000
-send {LWin}
-sleep 100
-send fraps {Enter}
+!Numpad0::
+DetectHiddenWindows, On
+IfWinNotExist, ahk_exe javaw.exe
+	run, MinecraftLauncher.exe
+IfWinNotExist, ahk_exe fraps.exe
+	run, C:\Fraps\fraps.exe
+
+WinActivate ahk_exe javaw.exe
+DetectHiddenWindows, Off
 return
 
 ;----------------------------------------------------------
