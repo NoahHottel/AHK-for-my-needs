@@ -156,10 +156,7 @@ VSCode_Close(){
 
 ;Numpad0
 ^Numpad0::TaskManager_Open()
-!Numpad0::
-    Minecraft_Open()
-    Fraps_Open()
-return
+!Numpad0::Minecraft_Open()
 
 ;Numpad1
 ^Numpad1::Explorer_Open()
@@ -187,6 +184,11 @@ return
 
 ;Numpad7
 ^Numpad7:: run, Mailto:
+
+;Script Properties
+
++F1::Edit
++F2::Reload
 
 ;Need Direct Execution
 
