@@ -126,21 +126,6 @@ TaskManager_Open(){
     WinActivateBottom ahk_class TaskManagerWindow
     return
 }
-;ThunderBird Open
-ThunderBird_Open(){
-    IfWinNotExist, ahk_exe thunderbird.exe
-        run, thunderbird.exe
-    If WinActive("ahk_exe thunderbird.exe")
-        send ^{tab}
-    else WinActivate ahk_exe thunderbird.exe
-    return
-}
-;ThunderBird Close
-ThunderBird_Close(){
-    IfWinExist, ahk_exe thunderbird.exe
-        WinClose
-    return
-}
 ;VSCode Open
 VSCode_Open(){
     IfWinNotExist, ahk_exe Code.exe
@@ -201,8 +186,7 @@ return
 !Numpad6::Fastone_Close()
 
 ;Numpad7
-^Numpad7::ThunderBird_Open()
-!Numpad7::ThunderBird_Close()
+^Numpad7:: run, Mailto:
 
 ;Need Direct Execution
 
