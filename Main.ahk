@@ -99,7 +99,7 @@ Libre_Office_Close(){
 ;Minecraft Open
 Minecraft_Open(){
     IfWinNotExist, (ahk_exe minecraft.exe or ahk_exe javaw.exe)
-    	run, C:\Program Files (x86)\Minecraft\MinecraftLauncher.exe
+    	run, C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe
     IfWinNotActive, (ahk_exe minecraft.exe or ahk_exe javaw.exe)
         WinActivate ahk_exe javaw.exe
     return
