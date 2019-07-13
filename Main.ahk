@@ -104,6 +104,21 @@ Minecraft_Open(){
         WinActivate ahk_exe javaw.exe
     return
 }
+;Notepad++ Open
+Notepadpp_Open(){
+    IfWinNotExist, ahk_exe notepad++.exe
+        run, notepad++.exe
+    If WinActive("ahk_exe notepad++.exe")
+        send ^{PgDn}
+    else WinActivate ahk_exe notepad++.exe
+    return
+}
+;Notepad++ Close
+Notepadpp_Close(){
+    IfWinExist, ahk_exe notepad++.exe
+            WinClose
+        return
+}
 ;Spotify Open
 Spotify_Open(){
     IfWinNotExist, ahk_exe Spotify.exe
@@ -125,6 +140,23 @@ TaskManager_Open(){
         run, Taskmgr.exe
     WinActivateBottom ahk_class TaskManagerWindow
     return
+}
+;Vlc Open
+Vlc_Open(){
+    IfWinNotExist, ahk_exe vlc.exe
+            run, vlc.exe
+        GroupAdd, Noah_Videos, ahk_exe vlc.exe
+        if WinActive("ahk_exe vlc.exe")
+            GroupActivate, Noah_Videos, r
+        else
+            WinActivate ahk_exe vlc.exe
+        return
+}
+;Vlc Close
+Vlc_Close(){
+    IfWinExist, ahk_exe vlc.exe
+            WinClose
+        return
 }
 ;VSCode Open
 VSCode_Open(){
@@ -184,6 +216,14 @@ VSCode_Close(){
 
 ;Numpad7
 ^Numpad7:: run, Mailto:
+
+;Numpad8
+^Numpad8::Vlc_Open()
+!Numpad8::Vlc_Close()
+
+;Numpad9
+^Numpad9::Notepadpp_Open()
+!Numpad9::Notepadpp_Close()
 
 ;Script Properties
 
