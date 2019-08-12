@@ -98,11 +98,12 @@ Libre_Office_Close(){
 }
 ;Minecraft Open
 Minecraft_Open(){
-    IfWinNotExist, (ahk_exe minecraft.exe or ahk_exe javaw.exe)
+    IfWinNotExist, ahk_exe minecraft.exe or IfWinNotExist, ahk_exe javaw.exe
     	run, C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe
-    IfWinNotActive, (ahk_exe minecraft.exe or ahk_exe javaw.exe)
+    IfWinNotActive, ahk_exe minecraft.exe or IfWinNotActive, ahk_exe javaw.exe
         WinActivate ahk_exe javaw.exe
     return
+    run, Minecraft.ahk
 }
 ;Notepad++ Open
 Notepadpp_Open(){
