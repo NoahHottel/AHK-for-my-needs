@@ -103,7 +103,6 @@ Minecraft_Open(){
     IfWinNotActive, ahk_exe minecraft.exe or IfWinNotActive, ahk_exe javaw.exe
         WinActivate ahk_exe javaw.exe
     return
-    run, Minecraft.ahk
 }
 ;Notepad++ Open
 Notepadpp_Open(){
@@ -189,7 +188,10 @@ VSCode_Close(){
 
 ;Numpad0
 ^Numpad0::TaskManager_Open()
-!Numpad0::Minecraft_Open()
+!Numpad0::
+Minecraft_Open()
+Run, Minecraft.ahk
+return
 
 ;Numpad1
 ^Numpad1::Explorer_Open()
