@@ -270,7 +270,3 @@ EWD_MouseStartX := EWD_MouseX  ; Update for the next timer-call to this subrouti
 EWD_MouseStartY := EWD_MouseY
 return
 ;----------------------------------------------------------
-;----------------------------------------------------------
-;Changelog
-;
-;----------------------------------------------------------

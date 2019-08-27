@@ -14,7 +14,7 @@ Menu, Tray, Icon, C:\Users\noahh\Pictures\Saved Pictures\Netherrack.png
 return
 
 ;Auto Shifter
-0::
+F10::
 SHIFTING := !SHIFTING
 While (not SHIFTING)
 {
