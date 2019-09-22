@@ -9,9 +9,9 @@
 #SingleInstance, force
 SetWorkingDir %A_ScriptDir%
 ;Set key states
-SetNumLockState AlwaysOn
+;SetNumLockState AlwaysOn
 SetCapsLockState AlwaysOff
-SetScrollLockState AlwaysOff
+;SetScrollLockState AlwaysOff
 ;Icon
 Menu, Tray, Tip, Windows
 Menu, Tray, Icon, shell32.dll, 16 
@@ -19,8 +19,6 @@ return
 ;----------------------------------------------------------
 ;----------------------------------------------------------
 ;Functions
-
-;Numpad
 
 ;Explorer Open
 Explorer_Open(){
@@ -71,14 +69,6 @@ Firefox_Close(){
         WinClose
     return
 }
-;Fraps Open
-Fraps_Open(){
-    DetectHiddenWindows, On
-    IfWinNotExist, ahk_exe fraps.exe
-        run, C:\Fraps\fraps.exe
-    DetectHiddenWindows, Off
-    return
-}
 ;Libre Office Open
 Libre_Office_Open(){
     IfWinNotExist, ahk_class SALFRAME
@@ -95,29 +85,6 @@ Libre_Office_Close(){
     IfWinExist, ahk_class SALFRAME
         WinClose
     return
-}
-;Minecraft Open
-Minecraft_Open(){
-    IfWinNotExist, ahk_exe minecraft.exe or IfWinNotExist, ahk_exe javaw.exe
-    	run, C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe
-    IfWinNotActive, ahk_exe minecraft.exe or IfWinNotActive, ahk_exe javaw.exe
-        WinActivate ahk_exe javaw.exe
-    return
-}
-;Notepad++ Open
-Notepadpp_Open(){
-    IfWinNotExist, ahk_exe notepad++.exe
-        run, notepad++.exe
-    If WinActive("ahk_exe notepad++.exe")
-        send ^{PgDn}
-    else WinActivate ahk_exe notepad++.exe
-    return
-}
-;Notepad++ Close
-Notepadpp_Close(){
-    IfWinExist, ahk_exe notepad++.exe
-            WinClose
-        return
 }
 ;Spotify Open
 Spotify_Open(){
@@ -184,49 +151,38 @@ VSCode_Close(){
 #LButton::Media_Prev
 #Rbutton::Media_Next
 
-;Numpad
+#Up::Volume_Up
+#Down::Volume_Down
+#Space::Media_Play_Pause
+#Left::Media_Prev
+#Right::Media_Next
 
-;Numpad0
-^Numpad0::TaskManager_Open()
-!Numpad0::
-Minecraft_Open()
-Run, Minecraft.ahk
-return
+F2::Explorer_Open()
+CapsLock & F2::Explorer_Close()
 
-;Numpad1
-^Numpad1::Explorer_Open()
-!Numpad1::Explorer_Close()
+F3::Firefox_Open()
+CapsLock & F3::Firefox_Close()
 
-;Numpad2
-^Numpad2::Firefox_Open()
-!Numpad2::Firefox_Close()
+F4::VSCode_Open()
+CapsLock & F4::VSCode_Close()
 
-;Numpad3
-^Numpad3::VSCode_Open()
-!Numpad3::VSCode_Close()
+F5::Libre_Office_Open()
+CapsLock & F5::Libre_Office_Close()
 
-;Numpad4
-^Numpad4::Libre_Office_Open()
-!Numpad4::Libre_Office_Close()
+F6::Spotify_Open()
+CapsLock & F6::Spotify_Close()
 
-;Numpad5
-^Numpad5::Spotify_Open()
-!Numpad5::Spotify_Close()
+F7::Fastone_Open()
+CapsLock & F7::Fastone_Close()
 
-;Numpad6
-^Numpad6::Fastone_Open()
-!Numpad6::Fastone_Close()
+F8::Vlc_Open()
+CapsLock & F8::Vlc_Close()
 
-;Numpad7
-^Numpad7:: run, Mailto:
 
-;Numpad8
-^Numpad8::Vlc_Open()
-!Numpad8::Vlc_Close()
 
-;Numpad9
-^Numpad9::Notepadpp_Open()
-!Numpad9::Notepadpp_Close()
+F11:: run, Mailto:
+
+F12::TaskManager_Open()
 
 ;Script Properties
 
