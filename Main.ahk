@@ -69,6 +69,16 @@ Firefox_Close(){
         WinClose
     return
 }
+;Go_Back
+Go_Back(){
+    if WinActive("ahk_exe explorer.exe")
+        Send !{left}
+    if WinActive("ahk_exe firefox.exe")
+        Send ^+{tab}
+    if WinActive("ahk_exe Code.exe")
+        Send ^{tab}
+    Return
+}
 ;Libre Office Open
 Libre_Office_Open(){
     IfWinNotExist, ahk_class SALFRAME
@@ -156,6 +166,8 @@ VSCode_Close(){
 #Space::Media_Play_Pause
 #Left::Media_Prev
 #Right::Media_Next
+
+F1::Go_Back()
 
 F2::Explorer_Open()
 CapsLock & F2::Explorer_Close()
