@@ -88,6 +88,10 @@ Libre_Office_Close(){
         WinClose
     return
 }
+;Mail
+Mail_Open(){
+    Run "https://mail.google.com/mail/u/0/#inbox"
+}
 ;Spotify Open
 Spotify_Open(){
     IfWinNotExist, ahk_exe Spotify.exe
@@ -166,15 +170,12 @@ CapsLock & F7::Fastone_Close()
 F8::Vlc_Open()
 CapsLock & F8::Vlc_Close()
 
-
-
-F11:: run, Mailto:
+F11::Mail_Open()
 
 F12::TaskManager_Open()
 
 ;Script Properties
-
-+F1::Edit
++F1::Suspend
 +F2::Reload
-+F3::Suspend
++F3::Edit
 ;----------------------------------------------------------

@@ -9,11 +9,11 @@
 SetWorkingDir %A_ScriptDir%
 run, App_Change.ahk
 ;----------------------------------------------------------
-;#NoTrayIcon
+#NoTrayIcon
 ;Set key states
 SetNumLockState AlwaysOn
 SetCapsLockState AlwaysOff
-SetScrollLockState AlwaysOff
+;SetScrollLockState AlwaysOff
 return
 ;----------------------------------------------------------
 ;Volume
@@ -29,7 +29,7 @@ return
 #Left::Media_Prev
 #Right::Media_Next
 ;----------------------------------------------------------
-;Need Direct Execution
+;Win Controls
 
 ;WinDrag
 CapsLock & LButton::
