@@ -29,23 +29,6 @@ Explorer_Close(){
         WinClose
     return
 }
-;FastStone Open
-Fastone_Open(){
-    IfWinNotExist, ahk_exe FSViewer.exe
-        run, FSViewer.exe
-    GroupAdd, Noah_Photos, ahk_exe FSViewer.exe
-    if WinActive("ahk_exe FSViewer.exe")
-        GroupActivate, Noah_Photos, r
-    else
-        WinActivate ahk_exe FSViewer.exe
-    return
-}
-;FastStone Close
-Fastone_Close(){
-    IfWinExist, ahk_exe FSViewer.exe
-        WinClose
-    return
-}
 ;Firefox Open
 Firefox_Open(){
     IfWinNotExist, ahk_exe firefox.exe
@@ -107,29 +90,27 @@ Spotify_Close(){
         WinClose
     return
 }
+;Steam Open
+/*
+Steam_Open(){
+    IfWinNotExist, ahk_exe Steam.exe
+        Run, C:\Program Files (x86)\Steam\Steam.exe‪
+    WinActivateBottom ahk_exe Steam.exe
+    return
+}
+;Steam Close
+Steam_Close(){
+    IfWinExist, ahk_exe Steam.exe
+        WinClose
+    return
+}
+*/
 ;TaskManager open
 TaskManager_Open(){
     IfWinNotExist, ahk_exe Taskmgr.exe
         run, Taskmgr.exe
     WinActivateBottom ahk_class TaskManagerWindow
     return
-}
-;Vlc Open
-Vlc_Open(){
-    IfWinNotExist, ahk_exe vlc.exe
-            run, vlc.exe
-        GroupAdd, Noah_Videos, ahk_exe vlc.exe
-        if WinActive("ahk_exe vlc.exe")
-            GroupActivate, Noah_Videos, r
-        else
-            WinActivate ahk_exe vlc.exe
-        return
-}
-;Vlc Close
-Vlc_Close(){
-    IfWinExist, ahk_exe vlc.exe
-            WinClose
-        return
 }
 ;VSCode Open
 VSCode_Open(){
@@ -158,18 +139,15 @@ CapsLock & F3::Firefox_Close()
 F4::VSCode_Open()
 CapsLock & F4::VSCode_Close()
 
-F5::Libre_Office_Open()
-CapsLock & F5::Libre_Office_Close()
+F5::Spotify_Open()
+CapsLock & F5::Spotify_Close()
 
-F6::Spotify_Open()
-CapsLock & F6::Spotify_Close()
-
-F7::Fastone_Open()
-CapsLock & F7::Fastone_Close()
-
-F8::Vlc_Open()
-CapsLock & F8::Vlc_Close()
-
+F6::Libre_Office_Open()
+CapsLock & F6::Libre_Office_Close()
+/*
+F7::Steam_Open()
+CapsLock & F7::Steam_Close()
+*/
 F11::Mail_Open()
 
 F12::TaskManager_Open()
