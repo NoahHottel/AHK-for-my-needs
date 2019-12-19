@@ -1,0 +1,53 @@
+﻿Sketch*
+Smart dimension*
+Line*
+Centerline
+Midpoint Line
+Circle*
+Perimeter Circle
+Spline
+Style Spline
+Spline on Surface
+Equation Driven Curve
+Corner Rectangle*
+Center Rectangle
+3 Point Corner Rectangle
+3 Point Center Rectangle
+Parallelogram
+Centerpoint Arc
+Tangent Arc
+3 Point Arc
+Ellipse
+Partial Ellipse
+Parabola
+Conic
+Straight Slot*
+Centerpoint Straight Slot
+3 Point Arc Slot
+Centerpoint Arc Slot
+Polygon
+Sketch Fillet*
+Sketch Chamfer
+
+
+Save*
+Save As*
+
+
+Extrude Boss/Base*
+Revolved Boss/Base
+Extruded Cut*
+Revolved Cut
+
+
+W is console
+CTRL, ALT and combination
+
+
+ahk_class Afx:0000000140000000:8:0000000000010003:0000000000000000:0000000000020755
+
+
+* = make first
+
+s = Save
+ctrl s = Sketch
