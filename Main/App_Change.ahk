@@ -78,7 +78,7 @@ Mail_Open(){
 ;Spotify Open
 Spotify_Open(){
     IfWinNotExist, ahk_exe Spotify.exe
-        run, C:\Users\noahh\AppData\Roaming\Spotify\Spotify.exe
+        run, %APPDATA%\Roaming\Spotify\Spotify.exe
     If WinActive("ahk_exe Spotify.exe")
         send {Media_Next}
     else WinActivate ahk_exe Spotify.exe
@@ -115,7 +115,7 @@ TaskManager_Open(){
 ;VSCode Open
 VSCode_Open(){
     IfWinNotExist, ahk_exe Code.exe
-        run, C:\Users\noahh\AppData\Local\Programs\Microsoft VS Code\Code.exe
+        run, %APPDATA%\Local\Programs\Microsoft VS Code\Code.exe
     If WinActive("ahk_exe Code.exe")
         send ^+{tab}
     else WinActivate ahk_exe Code.exe

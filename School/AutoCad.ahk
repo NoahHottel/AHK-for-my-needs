@@ -141,32 +141,3 @@ return
 ;F
 ;T
 ;----------------------------------------------------------
-
-;----------------------------------------------------------
-;Timeline
-;
-;02-18-2019
-;added top, alt, and autocad shortcut bars
-;added ZoomAll, Save Functs
-;added Z, S, HKS
-;
-;02-20-2019
-;fixed zoomall to the words "zoom, all" from "z. a"
-;added nonneeded circle, but i wanted to keep things in this script
-;put left button wait down for DiameterCircle
-;added the save all funct to ctrl+s
-;put the three exalters with "z" as exit app
-;Added the nonneeded fillet and explode
-;added line named "V"ector
-;
-;02-21-2019
-;added delete funct to "d"
-;
-;02-22-2019
-;added + to - for self reasons
-;added trim functs to 't'
-;
-;03-06-2019
-;added Alt+f to offset
-;got rid off + to - for not working as well as expected.
-;----------------------------------------------------------

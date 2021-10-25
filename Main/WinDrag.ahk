@@ -1,37 +1,23 @@
-﻿;----------------------------------------------------------
-;Main.ahk
-;@Author : Noah Hottel (NoahHottel@gmail.com)
-;@Link   : https://github.com/NoahHottel
-;@Date   : 6/10/2019, 4:08:49 PM
+; Easy Window Dragging (requires XP/2k/NT)
+; https://www.autohotkey.com
+; Normally, a window can only be dragged by clicking on its title bar.
+; This script extends that so that any point inside a window can be dragged.
+; To activate this mode, hold down CapsLock or the middle mouse button while
+; clicking, then drag the window to a new position.
+
+; Note: You can optionally release CapsLock or the middle mouse button after
+; pressing down the mouse button rather than holding it down the whole time.
+; This script requires v1.0.25+.
+
+
 ;----------------------------------------------------------
-;Script defaults
+;THIS PART WAS EDDITED BY ME
 #SingleInstance, force
 SetWorkingDir %A_ScriptDir%
-run, App_Change.ahk
-;----------------------------------------------------------
 #NoTrayIcon
-;Set key states
-SetNumLockState AlwaysOn
-SetCapsLockState AlwaysOff
-;SetScrollLockState AlwaysOff
-return
 ;----------------------------------------------------------
-;Volume
-#WheelUp::Volume_Up
-#WheelDown::Volume_Down
-#MButton::Media_Play_Pause
-#LButton::Media_Prev
-#Rbutton::Media_Next
 
-#Up::Volume_Up
-#Down::Volume_Down
-#Space::Media_Play_Pause
-#Left::Media_Prev
-#Right::Media_Next
-;----------------------------------------------------------
-;Win Controls
 
-;WinDrag
 CapsLock & LButton::
 CoordMode, Mouse  ; Switch to screen/absolute coordinates.
 MouseGetPos, EWD_MouseStartX, EWD_MouseStartY, EWD_MouseWin
@@ -65,4 +51,3 @@ WinMove, ahk_id %EWD_MouseWin%,, EWD_WinX + EWD_MouseX - EWD_MouseStartX, EWD_Wi
 EWD_MouseStartX := EWD_MouseX  ; Update for the next timer-call to this subroutine.
 EWD_MouseStartY := EWD_MouseY
 return
-;----------------------------------------------------------
