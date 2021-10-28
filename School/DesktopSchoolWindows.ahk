@@ -103,18 +103,14 @@ TaskManager_Open(){
 
 F12::TaskManager_Open()
 
-;F1
 F1::Explorer_Open()
 CapsLock & F1::Explorer_Close()
 
-;F2
 F2::Chrome_Open()
 CapsLock & F2::Chrome_Close()
 
-;F3
 F3::Auto_Cad_Open()
 CapsLock & F3::Auto_Cad_Close()
 
-;F4
 F4::Solidworks_Open()
 CapsLock & F4::Solidworks_Close()

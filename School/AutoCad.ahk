@@ -19,26 +19,31 @@ ZoomAll(){
 	Sleep 10
 	;all command
 	send ALL{Enter}
+return
 }
 ;Save funct
 Save(){
 	;save command
 	send QSAVE{Enter}
+return
 }
 ;Save As funct
 SaveAs(){
 	;saveas command
 	send SAVEAS{Enter}
+return
 }
 ;Left Mouse funct
 LeftMouse(){
 	;wait for left mouse button
 	KeyWait, LButton, D
+return
 }
 ;Radius Circle funct
 Circle(){
 	;circle command
 	send CIRCLE{Enter}
+return
 }
 ;Diameter Circle funct
 DiameterCircle(){
@@ -48,31 +53,37 @@ DiameterCircle(){
 	LeftMouse()
 	;diameter
 	send DIAMETER{Enter}
+return
 }
 ;Explode funct
 Explode(){
 	;explode command
 	send EXPLODE{Enter}
+return
 }
 ;Fillet funct
 Fillet(){
 	 ;fillet command
 	 send FILLET{Enter}
+return
 }
 ;Line funct
 Line(){
 	;line command
 	send LINE{Enter}
+return
 }
 ;Delete funct
 Delete(){
 	;Delete command
 	send DELETE{Enter}
+return
 }
 ;Trim funct
 Trim(){
 	;Trim command
 	send TRIM{Enter}
+return
 }
 ;Offset funct
 Offset(){
@@ -80,64 +91,23 @@ Offset(){
 	send OFFSET{Enter}
 }
 
-;HOTKEYSWITCHES
+;HOTKEYS
 
-;Ctrl+Alt+Shift+Z
-^!+z::ExitApp
-;Z
-z::
-ZoomAll()
-return
-;S
-s::
-Save()
-return
-;Ctrl+S
-^s::
-SaveAs()
-return
-;C
-c::
-Circle()
-return
-;Alt+C
-!c::
-DiameterCircle()
-return
-;X
-x::
-Explode()
-return
-;F
-f::
-Fillet()
-return
-;V
-v::
-Line()
-return
-;D
-d::
-Delete()
-return
-;T
-t::
-Trim()
-return
-;Ctrl+F
-^f::
-Offset()
-return
+c::Circle()
+!c::DiameterCircle()
 
-;----------------------------------------------------------
-;Keys Used
-;
-;Z
-;X
-;C
-;V
-;S
-;D
-;F
-;T
-;----------------------------------------------------------
+d::Delete()
+
+f::Fillet()
+^f::Offset()
+
+s::Save()
+^s::SaveAs()
+
+t::Trim()
+
+v::Line()
+
+x::Explode()
+
+z::ZoomAll()

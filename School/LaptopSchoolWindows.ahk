@@ -93,13 +93,16 @@ Vlc_Close(){
 ;----------------------------------------------------------
 ;Hotkeys
 
+^0::TaskManager_Open()
+
 ^1::Explorer_Open()
 !1::Explorer_Close()
+
 ^2::Chrome_Open()
 !2::Chrome_Close()
+
 ^3::Visual_Studio_Open()
 !3::Visual_Studio_Close()
-^0::TaskManager_Open()
 
 ^4::Vlc_Open()
 !4::Vlc_Close()

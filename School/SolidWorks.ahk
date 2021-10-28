@@ -16,119 +16,122 @@ Command(command,double){
     send w
     sleep 60
     send %command%
-    If %double% = 1
+    send %double%
+    one = 1
+    if one = %double%
     {
         Send {Enter}
         Send {Enter}
     }
+    
 }
 Sketch(){
-    Command(SKETCH,0)
+    Command("SKETCH",0)
 }
 Smart_dimension(){
-    Command(SMART DIMENSION,1)
+    Command("SMART DIMENSION",1)
 }
 Line(){
-    Command(LINE,1)
+    Command("LINE",1)
 }
 Centerline(){
-    Command(CENTERLINE,1)
+    Command("CENTERLINE",1)
 }
 Midpoint_Line(){
-    Command(MIDPOINT LINE,1)
+    Command("MIDPOINT LINE",1)
 }
 Circle(){
-    Command(CIRCLE,1)
+    Command("CIRCLE",1)
 }
 Perimeter_Circle(){
-    Command(PERIMETER CIRCLE,1)
+    Command("PERIMETER CIRCLE",1)
 }
 Spline(){
-    Command(SPLINE,1)
+    Command("SPLINE",1)
 }
 Style_Spline(){
-    Command(STYLE SPLINE,1)
+    Command("STYLE SPLINE",1)
 }
 Spline_On_Surface(){
-    Command(SPLINE ON SURFACE,1)
+    Command("SPLINE ON SURFACE",1)
 }
 Equation_Driven_Curve(){
-    Command(EQUATION DRIVEN CURVE,1)
+    Command("EQUATION DRIVEN CURVE",1)
 }
 Corner_Rectangle(){
-    Command(CORNER RECTANGLE,1)
+    Command("CORNER RECTANGLE",1)
 }
 Center_Rectangle(){
-    Command(CENTER RECTANGLE,1)
+    Command("CENTER RECTANGLE",1)
 }
 3_Point_Corner_Rectangle(){
-    Command(3 POINT CORNER RECTANGLE,1)
+    Command("3 POINT CORNER RECTANGLE",1)
 }
 3_Point_Center_Rectangle(){
-    Command(3 POINT CENTER RECTGANGLE,1)
+    Command("3 POINT CENTER RECTGANGLE",1)
 }
 Parallelogram(){
-    Command(PARALLELOGRAM,1)
+    Command("PARALLELOGRAM",1)
 }
 Centerpoint_Arc(){
-    Command(CENTERPOINT ARC,1)
+    Command("CENTERPOINT ARC",1)
 }
 Tangent_Arc(){
-    Command(TANGENT ARC,1)
+    Command("TANGENT ARC",1)
 }
 3_Point_Arc(){
-    Command(3 POINT ARC,1)
+    Command("3 POINT ARC",1)
 }
 Ellipse(){
-    Command(ELLIPSE,1)
+    Command("ELLIPSE",1)
 }
 Partial_Ellipse(){
-    Command(PARTIAL ELLIPSE,1)
+    Command("PARTIAL ELLIPSE",1)
 }
 Parabola(){
-    Command(PARABOLA,1)
+    Command("PARABOLA",1)
 }
 Conic(){
-    Command(CONIC,1)
+    Command("CONIC",1)
 }
 Straight_Slot(){
-    Command(STRAIGHT SLOT,1)
+    Command("STRAIGHT SLOT",1)
 }
 Centerpoint_Straight_Slot(){
-    Command(CENTERPOINT STRAIGHT SLOT,1)
+    Command("CENTERPOINT STRAIGHT SLOT",1)
 }
 3_Point_Arc_Slot(){
-    Command(3 POINT ARC SLOT,1)
+    Command("3 POINT ARC SLOT",1)
 }
 Centerpoint_Arc_Slot(){
-    Command(CENTERPOOINT ARC SLOT,1)
+    Command("CENTERPOOINT ARC SLOT",1)
 }
 Polygon(){
-    Command(POLYGON,1)
+    Command("POLYGON",1)
 }
 Sketch_Fillet(){
-    Command(SKETCH FILLET,1)
+    Command("SKETCH FILLET",1)
 }
 Sketch_Chamfer(){
-    Command(SKETCH CHAMFER,1)
+    Command("SKETCH CHAMFER",1)
 }
 Save(){
-    Command(SAVE,1)
+    Command("SAVE",1)
 }
 Save_As(){
-    Command(SAVE AS,1)
+    Command("SAVE AS",1)
 }
 Extrude_Boss_Base(){
-    Command(EXTRUDE BOSS/BASE,1)
+    Command("EXTRUDE BOSS/BASE",1)
 }
 Revolved_Boss_Base(){
-    Command(EXTRUDE BOSS/BASE,1)
+    Command("rEVOLVED BOSS/BASE",1)
 }
 Extrude_Cut(){
-    Command(EXTRUDE CUT,1)
+    Command("EXTRUDE CUT",1)
 }
 Revolved_Cut(){
-    Command(REVOLVED CUT,1)
+    Command("REVOLVED CUT",1)
 }
 ;----------------------------------------------------------
 ;HotKeys
