@@ -11,21 +11,30 @@
 
 
 ;----------------------------------------------------------
-;THIS PART WAS EDDITED BY ME
 #SingleInstance, force
 SetWorkingDir %A_ScriptDir%
 #NoTrayIcon
 ;----------------------------------------------------------
 
 
-CapsLock & LButton::
+^LButton::
 CoordMode, Mouse  ; Switch to screen/absolute coordinates.
 MouseGetPos, EWD_MouseStartX, EWD_MouseStartY, EWD_MouseWin
 WinGetPos, EWD_OriginalPosX, EWD_OriginalPosY,,, ahk_id %EWD_MouseWin%
 WinGet, EWD_WinState, MinMax, ahk_id %EWD_MouseWin% 
-if EWD_WinState = 0  ; Only if the window isn't maximized
+;----------------------------------------------------------
+if (EWD_WinState = 0){ ; Only if the window isn't maximized
     SetTimer, EWD_WatchMouse, 10 ; Track the mouse as the user drags it.
+    WinActivate, ahk_id %EWD_MouseWin%
+} 
+else{
+    WinActivate, ahk_id %EWD_MouseWin%
+    WinRestore, ahk_id %EWD_MouseWin%
+    SetTimer, EWD_WatchMouse, 10
+}
 return
+;----------------------------------------------------------
+
 
 EWD_WatchMouse:
 GetKeyState, EWD_LButtonState, LButton, P

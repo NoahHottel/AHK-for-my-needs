@@ -14,15 +14,15 @@ run, WinDrag.ahk
 ;Set key states
 SetNumLockState AlwaysOn
 SetCapsLockState AlwaysOff
-;SetScrollLockState AlwaysOff
+SetScrollLockState AlwaysOff
 return
 ;----------------------------------------------------------
 ;Volume
-#WheelUp::Volume_Up
-#WheelDown::Volume_Down
-#MButton::Media_Play_Pause
-#LButton::Media_Prev
-#Rbutton::Media_Next
+; #WheelUp::Volume_Up
+; #WheelDown::Volume_Down
+; #MButton::Media_Play_Pause
+; #LButton::Media_Prev
+; #Rbutton::Media_Next
 
 #Up::Volume_Up
 #Down::Volume_Down
