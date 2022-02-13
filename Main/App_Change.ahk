@@ -13,56 +13,59 @@ Menu, Tray, Icon, shell32.dll, 16
 ;Functions
 ;----------------------------------------------------------
 ;Exceptions
-#IfWinActive Minecraft
-    F3::Send, +F3
-#IfWinActive
+GroupAdd, Win_Exception, Minecraft
+GroupAdd, Win_Exception, ahk_exe starwarsbattlefrontii.exe
+;----------------------------------------------------------
+; #IfWinActive, Minecraft
+;----------------------------------------------------------
+#IfWinNotActive, ahk_group Win_Exception
 ;----------------------------------------------------------
 ;Explorer Start
 Explorer_Start(){
     run, explorer.exe
     GroupAdd, Noah_Explorers, ahk_class CabinetWClass
-    return
+    Return
 }
 ;Explorer Open
 Explorer_Open(){
     IfWinNotExist, ahk_class CabinetWClass
         run, explorer.exe
-    GroupAdd, Noah_Explorers, ahk_class CabinetWClass
-    if WinActive("ahk_class CabinetWClass")
+        GroupAdd, Noah_Explorers, ahk_class CabinetWClass
+    If WinActive("ahk_class CabinetWClass")
         GroupActivate, Noah_Explorers, r
-    else
+    Else
         WinActivate ahk_class CabinetWClass
-    return
+    Return
 }
 ;Explorer Close
 Explorer_Close(){
     IfWinExist, ahk_class CabinetWClass
         WinClose
-    return
+    Return
 }
 ;----------------------------------------------------------
 ;FastStone Start
 FastStone_Start(){
     run, FSViewer.exe
     GroupAdd, Noah_FastStone, ahk_exe FSViewer.exe
-    return
+    Return
 }
 ;FastStone Open
 FastStone_Open(){
     IfWinNotExist, ahk_exe FSViewer.exe
         run, FSViewer.exe
-    GroupAdd, Noah_FastStone, ahk_exe FSViewer.exe
-    if WinActive("ahk_exe FSViewer.exe")
+        GroupAdd, Noah_FastStone, ahk_exe FSViewer.exe
+    If WinActive("ahk_exe FSViewer.exe")
         GroupActivate, Noah_FastStone, r
-    else
+    Else
         WinActivate ahk_exe FSViewer.exe
-    return
+    Return
 }
 ;FastStone Close
 FastStone_Close(){
     IfWinExist, ahk_exe FSViewer.exe
         WinClose
-    return
+    Return
 }
 ;----------------------------------------------------------
 ;Firefox Open
@@ -71,56 +74,76 @@ Firefox_Open(){
         run, firefox.exe
     If WinActive("ahk_exe firefox.exe")
         send ^{tab}
-    else WinActivate ahk_exe firefox.exe
-    return
+    Else WinActivate ahk_exe firefox.exe
+    Return
 }
 ;Firefox Close
 Firefox_Close(){
     IfWinExist, ahk_exe firefox.exe
         WinClose
-    return
+    Return
+}
+;----------------------------------------------------------
+;GMail
+GMail_Open(){
+    Run "https://mail.google.com/mail/u/0/#inbox"
+}
+;----------------------------------------------------------
+;Gnu_Cash Open
+Gnu_Cash_Open(){
+    IfWinNotExist, ahk_exe gnucash.exe
+        run, C:\Program Files (x86)\gnucash\bin\gnucash.exe
+    If WinActive("ahk_exe gnucash.exe")
+        send ^!{PgDn}
+    Else WinActivate ahk_exe gnucash.exe
+    Return
+}
+;Gnu_Cash Close
+Gnu_Cash_Close(){
+    IfWinExist, ahk_exe gnucash.exe
+        WinClose
+    Return
 }
 ;----------------------------------------------------------
 ;Go_Back
 Go_Back(){
-    if WinActive("ahk_exe explorer.exe")
-        Send !{left}
-    if WinActive("ahk_exe firefox.exe")
-        Send ^+{tab}
-    if WinActive("ahk_exe Code.exe")
+    If WinActive("ahk_exe Code.exe")
         Send ^{tab}
-    if WinActive("ahk_exe thunderbird.exe")
+    If WinActive("ahk_exe explorer.exe")
+        Send !{left}
+    If WinActive("ahk_exe firefox.exe")
         Send ^+{tab}
-    return
+    If WinActive("ahk_exe gnucash.exe")
+        send ^!{PgUp}
+    If WinActive("ahk_exe WindowsTerminal.exe")
+        Send ^+{tab}
+    If WinActive("ahk_exe thunderbird.exe")
+        Send ^+{tab}
+    Return
 }
 ;----------------------------------------------------------
 ;Libre Office Start
 Libre_Office_Start(){
     run, soffice.exe
     GroupAdd, Noah_Office, ahk_class SALFRAME
-    return
+    Return
 }
 ;Libre Office Open
 Libre_Office_Open(){
     IfWinNotExist, ahk_class SALFRAME
         run, soffice.exe
-    GroupAdd, Noah_Office, ahk_class SALFRAME
-    if WinActive("ahk_class SALFRAME")
+        GroupAdd, Noah_Office, ahk_class SALFRAME
+    If WinActive("ahk_class SALFRAME")
         GroupActivate, Noah_Office, r
-    else
+    Else
         WinActivate ahk_class SALFRAME
-    return
+    Return
 }
 ;Libre Office Close
 Libre_Office_Close(){
     IfWinExist, ahk_class SALFRAME
         WinClose
-    return
-}
-;----------------------------------------------------------
-;GMail
-GMail_Open(){
-    Run "https://mail.google.com/mail/u/0/#inbox"
+    Return
 }
 ;----------------------------------------------------------
 ;Spotify Open
@@ -129,14 +152,14 @@ Spotify_Open(){
         run, %APPDATA%\Roaming\Spotify\Spotify.exe
     If WinActive("ahk_exe Spotify.exe")
         send {Media_Next}
-    else WinActivate ahk_exe Spotify.exe
-    return
+    Else WinActivate ahk_exe Spotify.exe
+    Return
 }
 ;Spotify Close
 Spotify_Close(){
     IfWinExist, ahk_exe Spotify.exe
         WinClose
-    return
+    Return
 }
 ;----------------------------------------------------------
 ;Steam Open
@@ -144,13 +167,13 @@ Steam_Open(){
     IfWinNotExist, ahk_exe Steam.exe
         Run, C:\Program Files (x86)\Steam\steam.exe
     WinActivateBottom ahk_exe Steam.exe
-    return
+    Return
 }
 ;Steam Close
 Steam_Close(){
     IfWinExist, ahk_exe Steam.exe
         WinClose
-    return
+    Return
 }
 ;----------------------------------------------------------
 ;TaskManager Open
@@ -158,7 +181,22 @@ TaskManager_Open(){
     IfWinNotExist, ahk_exe Taskmgr.exe
         run, Taskmgr.exe
     WinActivateBottom ahk_class TaskManagerWindow
-    return
+    Return
+}
+;----------------------------------------------------------
+Terminal_Open(){
+    IfWinNotExist, ahk_exe WindowsTerminal.exe
+        Run, C:\Users\noahh\Links\Windows Terminal
+    If WinActive("ahk_exe WindowsTerminal.exe")
+        send ^{tab}
+    Else WinActivate ahk_exe WindowsTerminal.exe
+    Return
+}
+
+Terminal_Close(){
+    IfWinExist, ahk_exe WindowsTerminal.exe
+        WinClose
+    Return
 }
 ;----------------------------------------------------------
 ;Thunderbird Open
@@ -167,38 +205,38 @@ Thunderbird_Open(){
         run, thunderbird.exe
     If WinActive("ahk_exe thunderbird.exe")
         send ^{tab}
-    else WinActivate ahk_exe thunderbird.exe
-    return
+    Else WinActivate ahk_exe thunderbird.exe
+    Return
 }
 ;Thunderbird Close
 Thunderbird_Close(){
     IfWinExist, ahk_exe thunderbird.exe
         WinMinimize, ahk_exe thunderbird.exe
-    return
+    Return
 }
 ;----------------------------------------------------------
 ;VLC Start
 VLC_Start(){
     run, vlc.exe
     GroupAdd, Noah_VLC, ahk_exe vlc.exe
-    return
+    Return
 }
 ;VLC Open
 VLC_Open(){
     IfWinNotExist, ahk_exe vlc.exe
         run, vlc.exe
-    GroupAdd, Noah_VLC, ahk_exe vlc.exe
-    if WinActive("ahk_exe vlc.exe")
+        GroupAdd, Noah_VLC, ahk_exe vlc.exe
+    If WinActive("ahk_exe vlc.exe")
         GroupActivate, Noah_VLC, r
-    else
+    Else
         WinActivate ahk_exe vlc.exe
-    return
+    Return
 }
 ;VLC Close
 VLC_Close(){
     IfWinExist, ahk_exe vlc.exe
         WinClose
-    return
+    Return
 }
 ;----------------------------------------------------------
 ;VSCode Open
@@ -207,14 +245,14 @@ VSCode_Open(){
         run, C:\Program Files\Microsoft VS Code\Code.exe
     If WinActive("ahk_exe Code.exe")
         send ^+{tab}
-    else WinActivate ahk_exe Code.exe
-    return
+    Else WinActivate ahk_exe Code.exe
+    Return
 }
 ;VSCode Close
 VSCode_Close(){
     IfWinExist, ahk_exe Code.exe
         WinClose
-    return
+    Return
 }
 ;----------------------------------------------------------
 
@@ -241,29 +279,22 @@ F6::Steam_Open()
 F7::VLC_Open()
 !F7::VLC_Close()
 
-#^F8::FastStone_Start()
-#F8::FastStone_Open()
-#!F8::FastStone_Close()
+^F8::FastStone_Start()
+F8::FastStone_Open()
+!F8::FastStone_Close()
  
 
-;F9
+F9::Gnu_Cash_Open()
+!F9::Gnu_Cash_Close()
 
-;F10
+F10::Terminal_Open()
+!F10::Terminal_Close()
 
 F11::ThunderBird_Open()
 !F11::ThunderBird_Close()
 
 F12::TaskManager_Open()
 
-;Non-Function Hotkeys
-;https://stackoverflow.com/questions/1794258/detect-a-double-key-press-in-autohotkey By: user2599522
-~Ctrl::
-keywait,Ctrl
-keywait,Ctrl,d t0.5 ; Increase the "t" value for a longer timeout.
-if errorlevel
-return
-WinMaximize, A
-return
 ;----------------------------------------------------------
 ;Script Properties
 ; +F1::Suspend

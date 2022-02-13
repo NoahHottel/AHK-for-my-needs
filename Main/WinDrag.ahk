@@ -9,7 +9,6 @@
 ; pressing down the mouse button rather than holding it down the whole time.
 ; This script requires v1.0.25+.
 
-
 ;----------------------------------------------------------
 #SingleInstance, force
 SetWorkingDir %A_ScriptDir%
@@ -17,46 +16,63 @@ SetWorkingDir %A_ScriptDir%
 ;----------------------------------------------------------
 
 
-^LButton::
-CoordMode, Mouse  ; Switch to screen/absolute coordinates.
-MouseGetPos, EWD_MouseStartX, EWD_MouseStartY, EWD_MouseWin
-WinGetPos, EWD_OriginalPosX, EWD_OriginalPosY,,, ahk_id %EWD_MouseWin%
-WinGet, EWD_WinState, MinMax, ahk_id %EWD_MouseWin% 
+#LButton::
+    CoordMode, Mouse  ; Switch to screen/absolute coordinates.
+    MouseGetPos, EWD_MouseStartX, EWD_MouseStartY, EWD_MouseWin
+    WinGetPos, EWD_OriginalPosX, EWD_OriginalPosY,,, ahk_id %EWD_MouseWin%
+    WinGet, EWD_WinState, MinMax, ahk_id %EWD_MouseWin% 
 ;----------------------------------------------------------
-if (EWD_WinState = 0){ ; Only if the window isn't maximized
-    SetTimer, EWD_WatchMouse, 10 ; Track the mouse as the user drags it.
-    WinActivate, ahk_id %EWD_MouseWin%
-} 
-else{
-    WinActivate, ahk_id %EWD_MouseWin%
-    WinRestore, ahk_id %EWD_MouseWin%
-    SetTimer, EWD_WatchMouse, 10
-}
-return
-;----------------------------------------------------------
+    if (EWD_WinState = 0){ ; Only if the window isn't maximized
+        SetTimer, EWD_WatchMouse, 10 ; Track the mouse as the user drags it.
+        WinActivate, ahk_id %EWD_MouseWin%
+    } 
+    else{
+        WinActivate, ahk_id %EWD_MouseWin%
+        WinRestore, ahk_id %EWD_MouseWin%
+        SetTimer, EWD_WatchMouse, 10
+    }
+    return
 
+;----------------------------------------------------------
 
 EWD_WatchMouse:
-GetKeyState, EWD_LButtonState, LButton, P
-if EWD_LButtonState = U  ; Button has been released, so drag is complete.
-{
-    SetTimer, EWD_WatchMouse, Off
+    GetKeyState, EWD_LButtonState, LButton, P
+    if (EWD_LButtonState = U){  ; Button has been released, so drag is complete.
+            SetTimer, EWD_WatchMouse, Off
+            return
+        }
+    GetKeyState, EWD_EscapeState, Escape, P
+    if (EWD_EscapeState = D){  ; Escape has been pressed, so drag is cancelled.
+            SetTimer, EWD_WatchMouse, Off
+            WinMove, ahk_id %EWD_MouseWin%,, %EWD_OriginalPosX%, %EWD_OriginalPosY%
+            return
+        }
+    ; Otherwise, reposition the window to match the change in mouse coordinates
+    ; caused by the user having dragged the mouse:
+    CoordMode, Mouse
+    MouseGetPos, EWD_MouseX, EWD_MouseY
+    WinGetPos, EWD_WinX, EWD_WinY,,, ahk_id %EWD_MouseWin%
+    SetWinDelay, 0   ; Makes the below move faster/smoother.
+    WinMove, ahk_id %EWD_MouseWin%,, EWD_WinX + EWD_MouseX - EWD_MouseStartX, EWD_WinY + EWD_MouseY - EWD_MouseStartY
+    EWD_MouseStartX := EWD_MouseX  ; Update for the next timer-call to this subroutine.
+    EWD_MouseStartY := EWD_MouseY
     return
-}
-GetKeyState, EWD_EscapeState, Escape, P
-if EWD_EscapeState = D  ; Escape has been pressed, so drag is cancelled.
-{
-    SetTimer, EWD_WatchMouse, Off
-    WinMove, ahk_id %EWD_MouseWin%,, %EWD_OriginalPosX%, %EWD_OriginalPosY%
+
+;----------------------------------------------------------
+
+;https://stackoverflow.com/questions/1794258/detect-a-double-key-press-in-autohotkey By: user2599522
+~Ctrl::
+    keywait,Ctrl
+    keywait,Ctrl,d t0.5 ; Increase the "t" value for a longer timeout.
+    if errorlevel
     return
-}
-; Otherwise, reposition the window to match the change in mouse coordinates
-; caused by the user having dragged the mouse:
-CoordMode, Mouse
-MouseGetPos, EWD_MouseX, EWD_MouseY
-WinGetPos, EWD_WinX, EWD_WinY,,, ahk_id %EWD_MouseWin%
-SetWinDelay, 0   ; Makes the below move faster/smoother.
-WinMove, ahk_id %EWD_MouseWin%,, EWD_WinX + EWD_MouseX - EWD_MouseStartX, EWD_WinY + EWD_MouseY - EWD_MouseStartY
-EWD_MouseStartX := EWD_MouseX  ; Update for the next timer-call to this subroutine.
-EWD_MouseStartY := EWD_MouseY
-return
+    WinMaximize, A
+    return
+
+~Alt::
+    keywait,Alt
+    keywait,alt,d t0.5 ; Increase the "t" value for a longer timeout.
+    if errorlevel
+    return
+    WinMinimize, A
+    return
